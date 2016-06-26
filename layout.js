@@ -4,7 +4,11 @@ module.exports = content => `
 <!doctype html>
 <html>
   <head>
-    <title>JRS CodeCamp</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>CodeCampKit</title>
+    <meta name="description" content="CodeCamp Kit Guide">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/github-markdown.css">
     <style>
       .markdown-body {
