@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+var path = require('path')
+var fs   = require('fs')
+var server  = path.join(path.dirname(fs.realpathSync(__filename)), '../')
+var argv = require('minimist')(process.argv)
+
+// start
+require(server)(argv._[2])

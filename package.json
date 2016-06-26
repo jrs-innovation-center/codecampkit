@@ -1,0 +1,23 @@
+{
+  "name": "codecampkit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "bin": {
+    "cck": "./bin/cck"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Tom",
+  "license": "ISC",
+  "dependencies": {
+    "filed": "^0.1.0",
+    "github-markdown-css": "^2.3.0",
+    "http-hash-router": "^1.1.0",
+    "marked": "^0.3.5",
+    "minimist": "^1.2.0",
+    "send-data": "^8.0.0"
+  }
+}
