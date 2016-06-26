@@ -16,7 +16,7 @@ const render = (req,res) => name => read(name, (err, content) => {
 })
 
 router.set('/github-markdown.css', (req, res) =>
-  filed('node_modules/github-markdown-css/github-markdown.css')
+  filed(__dirname + '/github-markdown.css')
     .pipe(res)
 )
 
