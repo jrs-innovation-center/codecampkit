@@ -1,17 +1,18 @@
 {
   "name": "codecampkit",
   "version": "1.0.0",
-  "description": "",
+  "description": "CodeCamp Kit is a module that is designed to get your workshop up and going quickly and with a well documented review process.",
   "main": "server.js",
   "bin": {
     "cck": "./bin/cck"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "Tom",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "filed": "^0.1.0",
     "github-markdown-css": "^2.3.0",
@@ -19,5 +20,14 @@
     "marked": "^0.3.5",
     "minimist": "^1.2.0",
     "send-data": "^8.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrs-innovation-center/codecampkit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jrs-innovation-center/codecampkit/issues"
+  },
+  "homepage": "https://github.com/jrs-innovation-center/codecampkit#readme"
 }
