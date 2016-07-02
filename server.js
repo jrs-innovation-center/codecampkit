@@ -34,7 +34,7 @@ router.set('/', (req, res) => {
 
 module.exports = port => {
   const server = http.createServer( (req, res) => {
-    router(req,res, {}, err => sendError(req, res, {body: err.message}))
+    router(req,res, {}, err => sendError(req, res, { body: JSON.stringify(err) }))
   })
 
   server.listen(process.env.PORT || port || 3000)
