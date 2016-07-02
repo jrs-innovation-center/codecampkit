@@ -1,6 +1,6 @@
 {
   "name": "codecampkit",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "CodeCamp Kit is a module that is designed to get your workshop up and going quickly and with a well documented review process.",
   "main": "server.js",
   "bin": {
