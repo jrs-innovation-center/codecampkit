@@ -2,7 +2,7 @@
 
 var path = require('path')
 var fs   = require('fs')
-var server  = path.join(path.dirname(fs.realpathSync(__filename)), '../')
+//var server  = path.join(path.dirname(fs.realpathSync(__filename)), '../')
 var argv = require('minimist')(process.argv)
 
 // start
