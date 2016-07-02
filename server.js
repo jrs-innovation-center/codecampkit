@@ -9,7 +9,7 @@ const path = require('path')
 
 const router = HttpHashRouter()
 
-const read = (name, cb) => fs.readFile(path.resolve('.', name + '.md'), 'utf-8', cb)
+const read = (name, cb) => fs.readFile(path.resolve(process.cwd(), name + '.md'), 'utf-8', cb)
 
 const render = (req,res) => name => read(name, (err, content) => {
   if (err) { return sendError(req, res, {body: JSON.stringify(err)}) }
