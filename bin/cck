@@ -14,7 +14,7 @@ const HttpHashRouter = require('http-hash-router')
 const sendHtml = require('send-data/html')
 const sendError = require('send-data/error')
 const filed = require('filed')
-const layout = require('./layout')
+const layout = require('../layout')
 // const fs = require('fs')
 // const path = require('path')
 
