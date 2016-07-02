@@ -5,10 +5,11 @@ const sendError = require('send-data/error')
 const filed = require('filed')
 const layout = require('./layout')
 const fs = require('fs')
+const path = require('path')
 
 const router = HttpHashRouter()
 
-const read = (name, cb) => fs.readFile(['.', name + '.md'].join('/'), 'utf-8', cb)
+const read = (name, cb) => fs.readFile(path.resolve('.', name + '.md'), 'utf-8', cb)
 
 const render = (req,res) => name => read(name, (err, content) => {
   if (err) { return sendError(req, res, {body: err.message}) }
@@ -16,8 +17,7 @@ const render = (req,res) => name => read(name, (err, content) => {
 })
 
 router.set('/github-markdown.css', (req, res) =>
-  filed(__dirname + '/github-markdown.css')
-    .pipe(res)
+  filed(__dirname + '/github-markdown.css').pipe(res)
 )
 
 router.set('/:lesson/:lab', (req, res, opts) => {
