@@ -155,8 +155,16 @@ function notebookJs () {
 const { compose, map } = require('ramda')
 
 const selectors = s => document.querySelectorAll(s)
-const create = element => Tonic.createNotebook({ element: element, source: element.innerText })
-const hidePre = element => element.querySelector('pre').style.display = 'none'
+const create = element => {
+  Tonic.createNotebook({ element: element, source: element.innerText })
+  return element
+}
+
+const hidePre = element => {
+  element.querySelector('pre').style.display = 'none'
+  return element
+}
+
 const process = compose(hidePre, create)
 
 module.exports = _ => compose(map(process),selectors)('.tonic')
