@@ -15,23 +15,22 @@ router.set('/config.js', sendJS(configJs))
 router.set('/app.js', sendJS(appJs))
 router.set('/get.js', sendJS(getJs))
 router.set('/notebook.js', sendJS(notebookJs))
-router.set('*.md', ecstatic({
-  root: process.cwd(),
-  handleError: false,
-  showDir: false
-})(req, res, function () {
-  res.writeHead(200, {'content-type': 'text/markdown; charset=UTF-8'})
-  res.end(`
-# File Not Found
 
-[Home](/)
-  `)
-})
 router.set('*', (req, res) => ecstatic({
   root: process.cwd(),
   handleError: false,
   showDir: false
 })(req, res, function (err) {
+    if (/.md$/.test(req.url)) {
+      res.writeHead(200, {'content-type': 'text/markdown; charset=UTF-8'})
+      res.end(`
+# File Not Found
+
+[Home](/)
+          `)
+      return
+    }
+    // other wise point back to basic html
     sendHtml(req, res, index())
   })
 )
@@ -46,6 +45,10 @@ server.on('error', (err) => console.log(err))
 
 module.exports = port =>
   server.listen(port || process.env.PORT || 3000)
+
+if (!module.parent) {
+  server.listen(process.env.PORT || 3000)
+}
 
 function index () {
   return `
