@@ -156,7 +156,9 @@ const { compose, map } = require('ramda')
 
 const selectors = s => document.querySelectorAll(s)
 const create = element => Tonic.createNotebook({ element: element, source: element.innerText })
+const hidePre = element => element.querySelector('pre').style.display = 'none'
+const process = compose(hidePre, create)
 
-module.exports = _ => compose(map(create),selectors)('.tonic')
+module.exports = _ => compose(map(process),selectors)('.tonic')
   `
 }
