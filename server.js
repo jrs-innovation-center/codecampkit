@@ -16,7 +16,7 @@ router.set('/app.js', sendJS(appJs))
 router.set('/get.js', sendJS(getJs))
 router.set('/notebook.js', sendJS(notebookJs))
 router.set('*', (req, res) => ecstatic({
-  root: __dirname,
+  root: process.cwd(),
   handleError: false,
   showDir: false
 })(req, res, function (err) {
