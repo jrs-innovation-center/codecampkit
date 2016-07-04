@@ -15,9 +15,9 @@
   "license": "MIT",
   "dependencies": {
     "ecstatic": "^1.4.1",
+    "filed": "^0.1.0",
     "http-hash-router": "^1.1.0",
-    "minimist": "^1.2.0",
-    "send-data": "^8.0.0"
+    "minimist": "^1.2.0"
   },
   "devDependencies": {},
   "repository": {
