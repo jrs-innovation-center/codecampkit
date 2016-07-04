@@ -5,7 +5,7 @@
  */
 
 /** get functional helpers */
-const { compose, map, set, lensPath } = require('ramda')
+const { compose, map } = require('ramda')
 
 /** get selectors */
 const selectors = s => document.querySelectorAll(s)
@@ -17,17 +17,18 @@ const create = element => {
   return element
 }
 /** hide pre block */
-const hidePre = element => {
-  var pre = element.querySelector('pre')
-  if (pre) {
-    set(lensPath(['style','display']), 'none', pre)
-  }
+const hideText = element => {
+  // var pre = element.querySelector('pre')
+  // if (pre) {
+  //   set(lensPath(['style','display']), 'none', pre)
+  // }
+  element.innerText = ''
 
   return element
 }
 
 /** compose create and hidePre */
-const process = compose(hidePre, create)
+const process = compose(hideText, create)
 
 /** export module */
 module.exports = _ => compose(map(process),selectors)('.tonic')

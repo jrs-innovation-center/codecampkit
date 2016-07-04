@@ -44,9 +44,9 @@ const render = b => {
 document.body.appendChild(el)
 
 /** load readme as root */
-page('/', ctx => get('/README.md').then(render))
+page('/', ctx => get('/index.md').then(render))
 /** load any sub folder readme */
-page('/:lesson', ctx => get('/' + ctx.params.lesson + '/README.md').then(render))
+page('/:lesson', ctx => get('/' + ctx.params.lesson + '/index.md').then(render))
 /** load any demo or exercise md */
 page('/:lesson/:name', ctx => {
   get('/' + [ctx.params.lesson, ctx.params.name + '.md'].join('/')).then(b => {
