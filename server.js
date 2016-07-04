@@ -24,22 +24,22 @@ const options = {
 /**
  * Default route serve index.html
  */
-router.set('/', (req, res) => filed('./client/index.html').pipe(res))
+router.set('/', (req, res) => filed(__dirname + '/client/index.html').pipe(res))
 
 /**
  * serve client js files
  */
-router.set('/js/:name', (req, res, data) => filed(`./client/js/${data.params.name}`).pipe(res))
+router.set('/js/:name', (req, res, data) => filed(`${__dirname}/client/js/${data.params.name}`).pipe(res))
 
 /**
  * serve markdown files or any other files in the project directory
  */
 router.set('*', (req, res) => ecstatic(options)(req, res, function (err) {
     if (/.md$/.test(req.url)) {
-      return filed('./client/404.md').pipe(res)
+      return filed(__dirname + '/client/404.md').pipe(res)
     }
     // other wise point back to basic html
-    filed('./client/index.html').pipe(res)
+    filed(__dirname + '/client/index.html').pipe(res)
   })
 )
 
@@ -48,7 +48,7 @@ router.set('*', (req, res) => ecstatic(options)(req, res, function (err) {
  */
 const server = http.createServer(function (req, res) {
   router(req, res, {}, (err) => {
-    filed('./client/index.html').pipe(res)
+    filed(__dirname + '/client/index.html').pipe(res)
   })
 })
 
@@ -59,7 +59,7 @@ module.exports = port =>
   server.listen(port || process.env.PORT || 3000)
 
 /**
- * if no parent then listen 
+ * if no parent then listen
  */
 if (!module.parent) {
   server.listen(process.env.PORT || 3000)
