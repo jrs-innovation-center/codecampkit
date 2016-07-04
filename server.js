@@ -4,7 +4,10 @@ const HttpHashRouter = require('http-hash-router')
 const sendError = require('send-data/error')
 const sendHtml = require('send-data/html')
 const sendJS = fn => (req, res) => {
-  res.writeHead(200, {'content-type': 'text/javascript'})
+  res.writeHead(200, {
+    'content-type': 'text/javascript',
+    'Cache-Control': '3600'
+  })
   res.end(fn())
 }
 
