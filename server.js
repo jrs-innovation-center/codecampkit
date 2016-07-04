@@ -115,7 +115,10 @@ const renderNotebook = require('./notebook.js')
 
 const view = b => domify('<div id="app" class="markdown-body">' + marked(b) + '</div>')
 const el = view('Loading...')
-const render = b => morphdom(el,view(b))
+const render = b => {
+  morphdom(el,view(b))
+  window.scrollTo(0,0)
+}
 
 document.body.appendChild(el)
 
@@ -127,7 +130,6 @@ page('/:lesson/:name', ctx => {
     renderNotebook('.tonic')
   })
 })
-page.exit(_ => window.scrollTo(0,0))
 page()
 
 // load last url endpoint
