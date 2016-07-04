@@ -19,7 +19,8 @@ router.set('/notebook.js', sendJS(notebookJs))
 router.set('*', (req, res) => ecstatic({
   root: process.cwd(),
   handleError: false,
-  showDir: false
+  showDir: false,
+  cache: 0
 })(req, res, function (err) {
     if (/.md$/.test(req.url)) {
       res.writeHead(200, {'content-type': 'text/markdown; charset=UTF-8'})
