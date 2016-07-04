@@ -12,23 +12,12 @@ const selectors = s => document.querySelectorAll(s)
 /** create notebook */
 const create = element => {
   if (Tonic) {
-    Tonic.createNotebook({ element: element, source: element.innerText })
+    var code = element.innerText
+    element.innerText = ''
+    Tonic.createNotebook({ element: element, source: code })
   }
   return element
 }
-/** hide pre block */
-const hideText = element => {
-  // var pre = element.querySelector('pre')
-  // if (pre) {
-  //   set(lensPath(['style','display']), 'none', pre)
-  // }
-  element.innerText = ''
-
-  return element
-}
-
-/** compose create and hidePre */
-const process = compose(hideText, create)
 
 /** export module */
-module.exports = _ => compose(map(process),selectors)('.tonic')
+module.exports = _ => compose(map(create),selectors)('.tonic')
