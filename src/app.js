@@ -35,11 +35,12 @@ const view = b => domify('<div id="app" class="markdown-body animated fadeIn">' 
 /** default view */
 const el = view('Loading...')
 /** render new view */
-const render = b => {
+const render = (b, cb) => {
   el.className = "markdown-body animated fadeOut"
   setTimeout(_ => {
     window.scrollTo(0,0)
     morphdom(el,view(b))
+    if (cb) cb()
   }, 250)
 }
 
@@ -53,9 +54,11 @@ page('/:lesson', ctx => get('/' + ctx.params.lesson + '/index.md').then(render))
 /** load any demo or exercise md */
 page('/:lesson/:name', ctx => {
   get('/' + [ctx.params.lesson, ctx.params.name + '.md'].join('/')).then(b => {
-    render(b)
-    renderNotebook('.tonic')
-    jsbinify()
+    render(b, _ => {
+      renderNotebook('.tonic')
+      jsbinify()
+    })
+
   })
 })
 /** start local router */

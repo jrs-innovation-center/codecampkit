@@ -35,11 +35,12 @@ var view = function (b) { return domify('<div id="app" class="markdown-body anim
 /** default view */
 var el = view('Loading...')
 /** render new view */
-var render = function (b) {
+var render = function (b, cb) {
   el.className = "markdown-body animated fadeOut"
   setTimeout(function (_) {
     window.scrollTo(0,0)
     morphdom(el,view(b))
+    if (cb) cb()
   }, 250)
 }
 
@@ -53,9 +54,11 @@ page('/:lesson', function (ctx) { return get('/' + ctx.params.lesson + '/index.m
 /** load any demo or exercise md */
 page('/:lesson/:name', function (ctx) {
   get('/' + [ctx.params.lesson, ctx.params.name + '.md'].join('/')).then(function (b) {
-    render(b)
-    renderNotebook('.tonic')
-    jsbinify()
+    render(b, function (_) {
+      renderNotebook('.tonic')
+      jsbinify()
+    })
+
   })
 })
 /** start local router */
