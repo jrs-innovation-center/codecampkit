@@ -36,8 +36,11 @@ var view = function (b) { return domify('<div id="app" class="markdown-body anim
 var el = view('Loading...')
 /** render new view */
 var render = function (b) {
-  morphdom(el,view(b))
-  window.scrollTo(0,0)
+  el.className = "markdown-body animated fadeOut"
+  setTimeout(function (_) {
+    window.scrollTo(0,0)
+    morphdom(el,view(b))
+  }, 100)
 }
 
 /** initial view appended */
