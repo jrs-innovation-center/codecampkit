@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "buble src -o client/js",
     "start": "node server.js"
   },
   "keywords": [],
@@ -19,7 +20,9 @@
     "http-hash-router": "^1.1.0",
     "minimist": "^1.2.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "buble": "^0.12.3"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jrs-innovation-center/codecampkit.git"

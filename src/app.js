@@ -1,15 +1,15 @@
 /**
  * import external modules
  */
-var domify = require('domify')
-var marked = require('marked')
-var page = require('page')
-var morphdom = require('morphdom')
+const domify = require('domify')
+const marked = require('marked')
+const page = require('page')
+const morphdom = require('morphdom')
 
 /**
  * get handles xhr get requests
  */
-var get = require('js:get')
+const get = require('js:get')
 
 /**
  * searches and processes any tonic code blocks
@@ -20,7 +20,7 @@ var get = require('js:get')
  *  </code></pre>
  * </div>
  */
-var renderNotebook = require('js:notebook')
+const renderNotebook = require('js:notebook')
 
 /**
  * embeds jsbin projects
@@ -28,14 +28,14 @@ var renderNotebook = require('js:notebook')
  * <a class="jsbin-embed foo" href="http://jsbin.com/iwovaj/74/embed?js,output">
  *  Simple Animation Tests</a>
  */
-var jsbinify = require('js:jsbinify')
+const jsbinify = require('js:jsbinify')
 
 /** create view */
-var view = function (b) { return domify('<div id="app" class="markdown-body">' + marked(b) + '</div>'); }
+const view = b => domify('<div id="app" class="markdown-body">' + marked(b) + '</div>')
 /** default view */
-var el = view('Loading...')
+const el = view('Loading...')
 /** render new view */
-var render = function (b) {
+const render = b => {
   morphdom(el,view(b))
   window.scrollTo(0,0)
 }
@@ -44,12 +44,12 @@ var render = function (b) {
 document.body.appendChild(el)
 
 /** load readme as root */
-page('/', function (ctx) { return get('/index.md').then(render); })
+page('/', ctx => get('/index.md').then(render))
 /** load any sub folder readme */
-page('/:lesson', function (ctx) { return get('/' + ctx.params.lesson + '/index.md').then(render); })
+page('/:lesson', ctx => get('/' + ctx.params.lesson + '/index.md').then(render))
 /** load any demo or exercise md */
-page('/:lesson/:name', function (ctx) {
-  get('/' + [ctx.params.lesson, ctx.params.name + '.md'].join('/')).then(function (b) {
+page('/:lesson/:name', ctx => {
+  get('/' + [ctx.params.lesson, ctx.params.name + '.md'].join('/')).then(b => {
     render(b)
     renderNotebook('.tonic')
     jsbinify()

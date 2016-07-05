@@ -5,14 +5,12 @@
  */
 
 /** get functional helpers */
-var ref = require('ramda');
-var compose = ref.compose;
-var map = ref.map;
+const { compose, map } = require('ramda')
 
 /** get selectors */
-var selectors = function (s) { return document.querySelectorAll(s); }
+const selectors = s => document.querySelectorAll(s)
 /** create notebook */
-var create = function (element) {
+const create = element => {
   if (Tonic) {
     var code = element.innerText
     element.innerText = ''
@@ -22,4 +20,4 @@ var create = function (element) {
 }
 
 /** export module */
-module.exports = function (_) { return compose(map(create),selectors)('.tonic'); }
+module.exports = _ => compose(map(create),selectors)('.tonic')
