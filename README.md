@@ -49,3 +49,12 @@ CCK is agnostic to how you build your demo's and exercises, but a great way is t
 ## Projects
 
 ## FAQ
+
+## Development Deploy
+
+```
+npm run build
+npm version patch
+git push origin master --tags
+npm publish
+```
