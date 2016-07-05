@@ -40,7 +40,7 @@ const render = b => {
   setTimeout(_ => {
     window.scrollTo(0,0)
     morphdom(el,view(b))
-  }, 100)
+  }, 250)
 }
 
 /** initial view appended */

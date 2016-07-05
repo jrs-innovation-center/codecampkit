@@ -40,7 +40,7 @@ var render = function (b) {
   setTimeout(function (_) {
     window.scrollTo(0,0)
     morphdom(el,view(b))
-  }, 100)
+  }, 250)
 }
 
 /** initial view appended */
