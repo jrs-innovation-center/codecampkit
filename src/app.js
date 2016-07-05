@@ -31,7 +31,7 @@ const renderNotebook = require('js:notebook')
 const jsbinify = require('js:jsbinify')
 
 /** create view */
-const view = b => domify('<div id="app" class="markdown-body">' + marked(b) + '</div>')
+const view = b => domify('<div id="app" class="markdown-body animated fadeIn">' + marked(b) + '</div>')
 /** default view */
 const el = view('Loading...')
 /** render new view */
