@@ -19,19 +19,19 @@ The codecampkit module focuses on markdown as its main source of content, using 
 
 ## Structure
 
-- README.md
+- index.md
 - 1-lesson
-  - README.md
+  - index.md
   - demo.md
   - 1.md
   - 2.md
 - 2-lesson
-  - README.md
+  - index.md
   - demo.md
   - 1.md
   - 2.md
 
-Every folder is a lesson and in each lesson there are a README, demo, and one or more exercises.
+Every folder is a lesson and in each lesson there are a index, demo, and one or more exercises.
 
 ## Links
 
