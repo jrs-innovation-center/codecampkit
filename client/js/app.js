@@ -44,22 +44,24 @@ var render = function (b, cb) {
   }, 250)
 }
 
+var renderAll = function (b) { return render(b, function (_) {
+  // TODO: create plugins
+  renderNotebook('.tonic')
+  jsbinify()
+}); }
+
 /** initial view appended */
 document.body.appendChild(el)
 
 /** load readme as root */
-page('/', function (ctx) { return get('/index.md').then(render); })
+page('/', function (ctx) { return get('/index.md').then(renderAll); })
 /** load any sub folder readme */
-page('/:lesson', function (ctx) { return get('/' + ctx.params.lesson + '/index.md').then(render); })
+page('/:lesson', function (ctx) { return get('/' + ctx.params.lesson + '/index.md')
+  .then(renderAll); })
 /** load any demo or exercise md */
 page('/:lesson/:name', function (ctx) {
-  get('/' + [ctx.params.lesson, ctx.params.name + '.md'].join('/')).then(function (b) {
-    render(b, function (_) {
-      renderNotebook('.tonic')
-      jsbinify()
-    })
-
-  })
+  get('/' + [ctx.params.lesson, ctx.params.name + '.md'].join('/'))
+    .then(renderAll)
 })
 /** start local router */
 page()

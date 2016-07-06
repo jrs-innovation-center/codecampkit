@@ -44,22 +44,24 @@ const render = (b, cb) => {
   }, 250)
 }
 
+const renderAll = b => render(b, _ => {
+  // TODO: create plugins
+  renderNotebook('.tonic')
+  jsbinify()
+})
+
 /** initial view appended */
 document.body.appendChild(el)
 
 /** load readme as root */
-page('/', ctx => get('/index.md').then(render))
+page('/', ctx => get('/index.md').then(renderAll))
 /** load any sub folder readme */
-page('/:lesson', ctx => get('/' + ctx.params.lesson + '/index.md').then(render))
+page('/:lesson', ctx => get('/' + ctx.params.lesson + '/index.md')
+  .then(renderAll))
 /** load any demo or exercise md */
 page('/:lesson/:name', ctx => {
-  get('/' + [ctx.params.lesson, ctx.params.name + '.md'].join('/')).then(b => {
-    render(b, _ => {
-      renderNotebook('.tonic')
-      jsbinify()
-    })
-
-  })
+  get('/' + [ctx.params.lesson, ctx.params.name + '.md'].join('/'))
+    .then(renderAll)
 })
 /** start local router */
 page()
