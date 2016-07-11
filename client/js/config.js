@@ -8,6 +8,6 @@ System.defaultJSExtensions = false
 System.config({
   paths: {
     "js:*": "/js/*.js",
-    "*": "https://wzrd.in/standalone/*"
+    "*": "https://wzrd.herokuapp.com/standalone/*"
   }
 })
