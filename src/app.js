@@ -43,7 +43,7 @@ const view = b => domify(`
     <header>${h || ''}</header>
     <div class="markdown-body">${marked(b)}</div>
     <footer>${f || 'All Rights Reserved...'}</footer>
-  </div>'
+  </div>
 `)
 
 

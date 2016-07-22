@@ -38,7 +38,7 @@ get('/header.md').then(function (header) { return h = header; })
 get('/footer.md').then(function (footer) { return f = footer; })
 
 /** create view */
-var view = function (b) { return domify(("\n  <div id=\"app\" class=\"animated fadeIn\">\n    <header>" + (h || '') + "</header>\n    <div class=\"markdown-body\">" + (marked(b)) + "</div>\n    <footer>" + (f || 'All Rights Reserved...') + "</footer>\n  </div>'\n")); }
+var view = function (b) { return domify(("\n  <div id=\"app\" class=\"animated fadeIn\">\n    <header>" + (h || '') + "</header>\n    <div class=\"markdown-body\">" + (marked(b)) + "</div>\n    <footer>" + (f || 'All Rights Reserved...') + "</footer>\n  </div>\n")); }
 
 
 /** default view */
