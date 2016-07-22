@@ -30,13 +30,28 @@ const renderNotebook = require('js:notebook')
  */
 const jsbinify = require('js:jsbinify')
 
+/** get header and footer */
+let h = null
+let f = null 
+
+get('/header.md').then(header => h = header)
+get('/footer.md').then(footer => f = footer)
+
 /** create view */
-const view = b => domify('<div id="app" class="markdown-body animated fadeIn">' + marked(b) + '</div>')
+const view = b => domify(`
+  <div id="app" class="animated fadeIn">
+    <header>${h || ''}</header>
+    <div class="markdown-body">${marked(b)}</div>
+    <footer>${f || 'All Rights Reserved...'}</footer>
+  </div>'
+`)
+
+
 /** default view */
 const el = view('Loading...')
 /** render new view */
 const render = (b, cb) => {
-  el.className = "markdown-body animated fadeOut"
+  el.className = "animated fadeOut"
   setTimeout(_ => {
     window.scrollTo(0,0)
     morphdom(el,view(b))
