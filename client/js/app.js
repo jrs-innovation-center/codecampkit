@@ -34,10 +34,9 @@ var jsbinify = require('js:jsbinify')
 var h = 'CodeCamp KIT'
 var f = 'All Rights Reserved...'
 
-get('/header.md').then(function (header) { return h = header; })
-get('/footer.md').then(function (footer) {
-    f = /File Not Found/.test(footer) ? f : footer
-})
+get('/header.md').then(function (header) { return h = /File Not Found/.test(header) ? h : header; })
+
+get('/footer.md').then(function (footer) { return f = /File Not Found/.test(footer) ? f : footer; })
 
 /** create view */
 var view = function (b) { return domify(("\n  <div id=\"app\" class=\"animated fadeIn\">\n    <header>" + (marked(h)) + "</header>\n    <div class=\"markdown-body\">" + (marked(b)) + "</div>\n    <footer>" + (marked(f)) + "</footer>\n  </div>\n")); }

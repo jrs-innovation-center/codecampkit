@@ -34,10 +34,11 @@ const jsbinify = require('js:jsbinify')
 let h = 'CodeCamp KIT'
 let f = 'All Rights Reserved...'
 
-get('/header.md').then(header => h = header)
-get('/footer.md').then(footer => {
-    f = /File Not Found/.test(footer) ? f : footer
-})
+get('/header.md').then(header => 
+  h = /File Not Found/.test(header) ? h : header)
+
+get('/footer.md').then(footer => 
+  f = /File Not Found/.test(footer) ? f : footer)
 
 /** create view */
 const view = b => domify(`
