@@ -34,15 +34,15 @@ const jsbinify = require('js:jsbinify')
 let h = null
 let f = null 
 
-get('/header.md').then(header => h = header)
-get('/footer.md').then(footer => f = footer)
+get('/header.md').then(header => h = header !== '# File Not Found [Home](/)' ? header : '')
+get('/footer.md').then(footer => f = footer !== '# File Not Found [Home](/)' ? footer : 'All Rights Reserved...')
 
 /** create view */
 const view = b => domify(`
   <div id="app" class="animated fadeIn">
-    <header>${h || ''}</header>
+    <header>${marked(h)}</header>
     <div class="markdown-body">${marked(b)}</div>
-    <footer>${f || 'All Rights Reserved...'}</footer>
+    <footer>${marked(f)}</footer>
   </div>
 `)
 
