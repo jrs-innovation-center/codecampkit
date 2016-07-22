@@ -31,13 +31,12 @@ const renderNotebook = require('js:notebook')
 const jsbinify = require('js:jsbinify')
 
 /** get header and footer */
-let h = null
-let f = null 
+let h = 'CodeCamp KIT'
+let f = 'All Rights Reserved...'
 
-get('/header.md').then(header => h = header !== '# File Not Found [Home](/)' ? header : '')
+get('/header.md').then(header => h = header)
 get('/footer.md').then(footer => {
-    //console.log(footer)
-    f = footer !== '# File Not Found [Home](/)' ? footer : 'All Rights Reserved...'
+    f = /File Not Found/.test(footer) ? f : footer
 })
 
 /** create view */

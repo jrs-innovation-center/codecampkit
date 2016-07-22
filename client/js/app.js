@@ -31,13 +31,12 @@ var renderNotebook = require('js:notebook')
 var jsbinify = require('js:jsbinify')
 
 /** get header and footer */
-var h = null
-var f = null 
+var h = 'CodeCamp KIT'
+var f = 'All Rights Reserved...'
 
-get('/header.md').then(function (header) { return h = header !== '# File Not Found [Home](/)' ? header : ''; })
+get('/header.md').then(function (header) { return h = header; })
 get('/footer.md').then(function (footer) {
-    //console.log(footer)
-    f = footer !== '# File Not Found [Home](/)' ? footer : 'All Rights Reserved...'
+    f = /File Not Found/.test(footer) ? f : footer
 })
 
 /** create view */
