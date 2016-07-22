@@ -35,7 +35,10 @@ let h = null
 let f = null 
 
 get('/header.md').then(header => h = header !== '# File Not Found [Home](/)' ? header : '')
-get('/footer.md').then(footer => f = footer !== '# File Not Found [Home](/)' ? footer : 'All Rights Reserved...')
+get('/footer.md').then(footer => {
+    //console.log(footer)
+    f = footer !== '# File Not Found [Home](/)' ? footer : 'All Rights Reserved...'
+})
 
 /** create view */
 const view = b => domify(`

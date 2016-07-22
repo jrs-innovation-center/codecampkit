@@ -34,11 +34,14 @@ var jsbinify = require('js:jsbinify')
 var h = null
 var f = null 
 
-get('/header.md').then(function (header) { return h = header; })
-get('/footer.md').then(function (footer) { return f = footer; })
+get('/header.md').then(function (header) { return h = header !== '# File Not Found [Home](/)' ? header : ''; })
+get('/footer.md').then(function (footer) {
+    //console.log(footer)
+    f = footer !== '# File Not Found [Home](/)' ? footer : 'All Rights Reserved...'
+})
 
 /** create view */
-var view = function (b) { return domify(("\n  <div id=\"app\" class=\"animated fadeIn\">\n    <header>" + (h || '') + "</header>\n    <div class=\"markdown-body\">" + (marked(b)) + "</div>\n    <footer>" + (f || 'All Rights Reserved...') + "</footer>\n  </div>\n")); }
+var view = function (b) { return domify(("\n  <div id=\"app\" class=\"animated fadeIn\">\n    <header>" + (marked(h)) + "</header>\n    <div class=\"markdown-body\">" + (marked(b)) + "</div>\n    <footer>" + (marked(f)) + "</footer>\n  </div>\n")); }
 
 
 /** default view */
