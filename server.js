@@ -5,6 +5,10 @@ const http = require('http')
 const ecstatic = require('ecstatic')
 const HttpHashRouter = require('http-hash-router')
 const filed = require('filed')
+const fs = require('fs')
+const ejs = require('ejs')
+const pkg = require('./package.json')
+const sendHtml = require('send-data/html')
 
 /**
  * Create Router
@@ -22,9 +26,16 @@ const options = {
 }
 
 /**
+  * Index
+  */
+const index = ejs.render(fs.readFileSync(__dirname + '/index.ejs.html', 'utf-8'),pkg)
+
+/**
  * Default route serve index.html
  */
-router.set('/', (req, res) => filed(__dirname + '/client/index.html').pipe(res))
+router.set('/', (req, res) => {
+  sendHtml(req, res, index)
+})
 
 /**
  * serve client js files
@@ -39,7 +50,7 @@ router.set('*', (req, res) => ecstatic(options)(req, res, function (err) {
       return filed(__dirname + '/client/404.md').pipe(res)
     }
     // other wise point back to basic html
-    filed(__dirname + '/client/index.html').pipe(res)
+    sendHtml(req, res, index)
   })
 )
 
@@ -48,7 +59,7 @@ router.set('*', (req, res) => ecstatic(options)(req, res, function (err) {
  */
 const server = http.createServer(function (req, res) {
   router(req, res, {}, (err) => {
-    filed(__dirname + '/client/index.html').pipe(res)
+    sendHtml(req, res, index)
   })
 })
 
