@@ -30,13 +30,23 @@ var renderNotebook = require('js:notebook')
  */
 var jsbinify = require('js:jsbinify')
 
+/** get header and footer */
+var h = 'CodeCamp KIT'
+var f = 'All Rights Reserved...'
+
+get('/header.md').then(function (header) { return h = /File Not Found/.test(header) ? h : header; })
+
+get('/footer.md').then(function (footer) { return f = /File Not Found/.test(footer) ? f : footer; })
+
 /** create view */
-var view = function (b) { return domify('<div id="app" class="markdown-body animated fadeIn">' + marked(b) + '</div>'); }
+var view = function (b) { return domify(("\n  <div id=\"app\" class=\"animated fadeIn\">\n    <header>" + (marked(h)) + "</header>\n    <div class=\"markdown-body\">" + (marked(b)) + "</div>\n    <footer>" + (marked(f)) + "</footer>\n  </div>\n")); }
+
+
 /** default view */
 var el = view('Loading...')
 /** render new view */
 var render = function (b, cb) {
-  el.className = "markdown-body animated fadeOut"
+  el.className = "animated fadeOut"
   setTimeout(function (_) {
     window.scrollTo(0,0)
     morphdom(el,view(b))
