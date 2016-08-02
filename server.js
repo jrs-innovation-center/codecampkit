@@ -7,7 +7,7 @@ const HttpHashRouter = require('http-hash-router')
 const filed = require('filed')
 const fs = require('fs')
 const ejs = require('ejs')
-const pkg = require('./package.json')
+const pkg = require(process.cwd() + '/package.json')
 const sendHtml = require('send-data/html')
 
 /**
