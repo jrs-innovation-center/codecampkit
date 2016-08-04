@@ -26,6 +26,7 @@ npm init
 npm install codecampkit -S
 json -I -f package.json -e 'this.scripts.start = "cck"'
 echo "# CodeCamp Kit Rocks!" >> index.md
+npm start
 ```
 
 ## Why?
@@ -78,7 +79,9 @@ CCK is agnostic to how you build your demo's and exercises, but a great way is t
 
 ## FAQ
 
-## Development Deploy
+## Contributor Help
+
+> If you want to contribute a change and publish the change to codecampkit, here are the instructions.
 
 ```
 npm run build
