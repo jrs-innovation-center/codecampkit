@@ -79,7 +79,7 @@ CCK is agnostic to how you build your demo's and exercises, but a great way is t
 
 ## FAQ
 
-## Contributor Help
+## CodeCampKit Repo Owner Deployment Instructions
 
 > If you want to contribute a change and publish the change to codecampkit, here are the instructions.
 
