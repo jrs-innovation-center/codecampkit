@@ -79,6 +79,23 @@ CCK is agnostic to how you build your demo's and exercises, but a great way is t
 
 ## FAQ
 
+* Can I serve as a static site?
+
+With some shell commands it should be possible:
+
+```
+mkdir -p 'dist/'
+curl 'localhost:3000' > 'dist/index.html'
+curl 'localhost:3000/js/config.js' > 'dist/config.js'
+curl 'localhost:3000/js/app.js' > 'dist/app.js'
+curl 'localhost:3000/js/get.js' > 'dist/get.js'
+curl 'localhost:3000/js/jsbinify.js' > 'dist/jsbinify.js'
+curl 'localhost:3000/js/notebook.js' > 'dist/notebook.js'
+mkdir -p dist/css
+curl 'localhost:3000/css/style.css' > 'dist/css/style.css'
+cp **/*.md > dist
+```
+
 ## CodeCampKit Repo Owner Deployment Instructions
 
 > If you want to contribute a change and publish the change to codecampkit, here are the instructions.
