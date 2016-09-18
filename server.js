@@ -9,6 +9,7 @@ const fs = require('fs')
 const ejs = require('ejs')
 const pkg = require(process.cwd() + '/package.json')
 const sendHtml = require('send-data/html')
+const summary = require('server-summary')
 
 /**
  * Create Router
@@ -67,11 +68,11 @@ const server = http.createServer(function (req, res) {
  * export listen command
  */
 module.exports = port =>
-  server.listen(port || process.env.PORT || 3000)
+  server.listen(port || process.env.PORT || 3000, summary(server))
 
 /**
  * if no parent then listen
  */
 if (!module.parent) {
-  server.listen(process.env.PORT || 3000)
+  server.listen(process.env.PORT || 3000, summary(server))
 }
