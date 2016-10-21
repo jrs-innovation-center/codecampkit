@@ -4,10 +4,10 @@
  */
 /** turn off default extensions to use wzrd.in */
 System.defaultJSExtensions = false
-/** setup default paths */
+  /** setup default paths */
 System.config({
   paths: {
     "js:*": "/js/*.js",
-    "*": "https://wzrd.herokuapp.com/standalone/*"
+    "*": "https://wzrd.in/standalone/*"
   }
 })
