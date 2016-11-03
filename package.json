@@ -8,23 +8,31 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "buble src -o client/js",
+    "build": "browserify src/app.js -o client/js/bundle.js -t es2040",
     "start": "node server.js"
   },
   "keywords": [],
   "author": "Tom",
   "license": "MIT",
   "dependencies": {
+    "domify": "^1.4.0",
     "ecstatic": "^1.4.1",
     "ejs": "^2.5.1",
     "filed": "^0.1.0",
     "http-hash-router": "^1.1.0",
+    "marked": "^0.3.6",
     "minimist": "^1.2.0",
+    "morphdom": "^2.2.0",
+    "page": "^1.7.1",
+    "ramda": "^0.22.1",
     "send-data": "^8.0.0",
-    "server-summary": "^6.0.1"
+    "server-summary": "^6.0.1",
+    "xhr": "^2.2.2"
   },
   "devDependencies": {
-    "buble": "^0.12.3"
+    "browserify": "^13.1.1",
+    "buble": "^0.12.3",
+    "es2040": "^1.2.4"
   },
   "repository": {
     "type": "git",

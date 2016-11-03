@@ -9,7 +9,7 @@ const morphdom = require('morphdom')
 /**
  * get handles xhr get requests
  */
-const get = require('js:get')
+const get = require('./get')
 
 /**
  * searches and processes any tonic code blocks
@@ -20,7 +20,7 @@ const get = require('js:get')
  *  </code></pre>
  * </div>
  */
-const renderNotebook = require('js:notebook')
+const renderNotebook = require('./notebook')
 
 /**
  * embeds jsbin projects
@@ -28,16 +28,16 @@ const renderNotebook = require('js:notebook')
  * <a class="jsbin-embed foo" href="http://jsbin.com/iwovaj/74/embed?js,output">
  *  Simple Animation Tests</a>
  */
-const jsbinify = require('js:jsbinify')
+const jsbinify = require('./jsbinify')
 
 /** get header and footer */
 let h = 'CodeCamp KIT'
 let f = 'All Rights Reserved...'
 
-get('/header.md').then(header => 
+get('/header.md').then(header =>
   h = /File Not Found/.test(header) ? h : header)
 
-get('/footer.md').then(footer => 
+get('/footer.md').then(footer =>
   f = /File Not Found/.test(footer) ? f : footer)
 
 /** create view */
