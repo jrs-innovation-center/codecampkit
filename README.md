@@ -1,13 +1,13 @@
 # CodeCampKit
 
-CodeCamp Kit is a markdown webserver, that is designed to enable you to author documentation and training materials using markdown as your primary file structure.
+CodeCamp Kit is a markdown web server, that is designed to enable you to author documentation and training materials using markdown as your content and your file structure as your endpoints.
 
 CodeCamp Kit works like a single page application, but it serves markdown files instead of html files and uses the github markdown styles for each file.
 
 ## Features
 
 * JSBin Embedded Integration - https://jsbin.com
-* TonicDev Integration - https://tonicdev.com
+* RunKit Integration - https://runkit.com
 
 * Setting the Web Title using a package.json file
 * Setting the meta description using a description in the package.json file
@@ -70,12 +70,14 @@ Every folder is a lesson and in each lesson there are a index, demo, and one or 
 
 ## Embedded Demos and Exercises
 
-CCK is agnostic to how you build your demo's and exercises, but a great way is the tonicdev embedded nodejs system, it enables you to run nodejs and npm modules right from your markdown pages.  See the [How To](/howto.md) page for more info.
+CCK is agnostic to how you build your demo's and exercises, but a great way is the runkit embedded nodejs system, it enables you to run nodejs and npm modules right from your markdown pages.  See the [How To](/howto.md) page for more info.
 
 ## Projects
 
 * http://kids.chscodecamp.com
-*
+* http://exercises.how2js.com
+* http://git.how2js.com
+* http://mysql.how2js.com
 
 ## FAQ
 
@@ -85,13 +87,10 @@ With some shell commands it should be possible:
 
 ```
 mkdir -p 'dist/'
+mkdir -p 'dist/js'
+mkdir -p 'dist/css'
 curl 'localhost:3000' > 'dist/index.html'
-curl 'localhost:3000/js/config.js' > 'dist/config.js'
-curl 'localhost:3000/js/app.js' > 'dist/app.js'
-curl 'localhost:3000/js/get.js' > 'dist/get.js'
-curl 'localhost:3000/js/jsbinify.js' > 'dist/jsbinify.js'
-curl 'localhost:3000/js/notebook.js' > 'dist/notebook.js'
-mkdir -p dist/css
+curl 'localhost:3000/js/bundle.js' > 'dist/js/bundle.js'
 curl 'localhost:3000/css/style.css' > 'dist/css/style.css'
 cp **/*.md > dist
 ```
