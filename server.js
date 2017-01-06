@@ -29,7 +29,13 @@ const options = {
 /**
   * Index
   */
-const index = ejs.render(fs.readFileSync(__dirname + '/index.ejs.html', 'utf-8'),pkg)
+let index = null
+
+try {
+  index = fs.readFileSync(process.cwd() + '/index.html', 'utf-8')
+} catch (e) {
+  index = ejs.render(fs.readFileSync(__dirname + '/index.ejs.html', 'utf-8'),pkg)
+}
 
 /**
  * Default route serve index.html
