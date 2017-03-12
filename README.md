@@ -19,6 +19,19 @@ CodeCamp Kit works like a single page application, but it serves markdown files 
 
 ## Getting Started
 
+### Easy
+
+```
+mkdir mycodecamp
+cd mycodecamp
+yarn init -y
+yarn add codecampkit
+yarn run cck-init
+yarn start
+```
+
+### Manual
+
 ```
 mkdir mycodecamp
 npm install json -g
