@@ -4,7 +4,8 @@
   "description": "CodeCamp Kit is a module that is designed to get your workshop up and going quickly and with a well documented review process.",
   "main": "server.js",
   "bin": {
-    "cck": "./bin/cck"
+    "cck": "./bin/cck",
+    "cck-init": "./bin/cck-init"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
