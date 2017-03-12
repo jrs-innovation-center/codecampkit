@@ -25,6 +25,10 @@ npm install json -g
 npm init
 npm install codecampkit -S
 json -I -f package.json -e 'this.scripts.start = "cck"'
+mkdir css
+touch css/style.css
+echo '<header><h1>Workshop Header</h1></header>' >> header.md
+echo '<footer>All Rights Reserved...</footer>' >> footer.md
 echo "# CodeCamp Kit Rocks!" >> index.md
 npm start
 ```
