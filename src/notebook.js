@@ -14,7 +14,7 @@ const create = element => {
   if (Tonic) {
     var code = element.innerText
     element.innerText = ''
-    Tonic.createNotebook({ element: element, source: code, nodeVersion: '6.9.2' })
+    Tonic.createNotebook({  nodeVersion: '6.9.2', element: element, source: code })
   }
   return element
 }
