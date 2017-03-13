@@ -12309,7 +12309,7 @@ function _createXHR(options) {
 
     function readystatechange() {
         if (xhr.readyState === 4) {
-            loadFunc()
+            setTimeout(loadFunc, 0)
         }
     }
 
@@ -12474,7 +12474,7 @@ function getXml(xhr) {
     if (xhr.responseType === "document") {
         return xhr.responseXML
     }
-    var firefoxBugTakenEffect = xhr.status === 204 && xhr.responseXML && xhr.responseXML.documentElement.nodeName === "parsererror"
+    var firefoxBugTakenEffect = xhr.responseXML && xhr.responseXML.documentElement.nodeName === "parsererror"
     if (xhr.responseType === "" && !firefoxBugTakenEffect) {
         return xhr.responseXML
     }
@@ -12989,7 +12989,7 @@ var create = function (element) {
   if (Tonic) {
     var code = element.innerText;
     element.innerText = '';
-    Tonic.createNotebook({ element: element, source: code });
+    Tonic.createNotebook({ element: element, source: code, nodeVersion: '6.9.2' });
   }
   return element;
 };
